@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { resolve, dirname } from 'path';
-import { fileUrlToPath } from 'url';
+import { fileURLToPath } from 'url';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,16 +10,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '#components': resolve(
-        dirname(fileUrlToPath(import.meta.url)),
-        'components'
+        dirname(fileURLToPath(import.meta.url)),
+        'src/components'
       ),
       '#constants': resolve(
-        dirname(fileUrlToPath(import.meta.url)),
-        'constants'
+        dirname(fileURLToPath(import.meta.url)),
+        'src/constants'
       ),
-      '#store': resolve(dirname(fileUrlToPath(import.meta.url)), 'store'),
-      '#hoc': resolve(dirname(fileUrlToPath(import.meta.url)), 'hoc'),
-      '#windows': resolve(dirname(fileUrlToPath(import.meta.url)), 'windows'),
+      '#store': resolve(dirname(fileURLToPath(import.meta.url)), 'src/store'),
+      '#hoc': resolve(dirname(fileURLToPath(import.meta.url)), 'src/hoc'),
+      '#windows': resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        'src/windows'
+      ),
     },
   },
 });
