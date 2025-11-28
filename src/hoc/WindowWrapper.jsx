@@ -6,8 +6,8 @@ import { useLayoutEffect, useRef } from 'react';
 
 const WindowWrapper = (Component, WindowKey) => {
   const Wrapped = (props) => {
-    const { focusedWindow, windows } = useWindowStore();
-    const { isOpen, Zindex } = windows[WindowKey];
+    const { focusWindow, windows } = useWindowStore();
+    const { isOpen, zIndex } = windows[WindowKey];
     const ref = useRef(null);
 
     useGSAP(() => {
@@ -24,7 +24,7 @@ const WindowWrapper = (Component, WindowKey) => {
     useGSAP(() => {
       const el = ref.current;
       if (!el) return () => {};
-      const [instance] =Draggable.create(el, { onPress: () => focusedWindow(WindowKey) });
+      const [instance] =Draggable.create(el, { onPress: () => focusWindow(WindowKey) });
       return () => instance.kill();
     }, []);
 
@@ -35,7 +35,7 @@ const WindowWrapper = (Component, WindowKey) => {
     }, [isOpen]);
 
     return (
-      <section id={WindowKey} ref={ref} style={{ Zindex }} className="absolute">
+      <section id={WindowKey} ref={ref} style={{ zIndex }} className="absolute">
         <Component {...props} />
       </section>
     );
