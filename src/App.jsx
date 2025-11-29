@@ -1,8 +1,9 @@
-import { Navbar, Welcome, Dock } from '#components';
+import { Navbar, Welcome, Dock, Home } from '#components';
 import {
   Contact,
   Finder,
   ImageWindowContent,
+  Photos,
   Resume,
   Safari,
   Terminal,
@@ -26,6 +27,8 @@ const App = () => {
       <Text />
       <ImageWindowContent />
       <Contact />
+      <Photos />
+      <Home />
     </main>
   );
 };
